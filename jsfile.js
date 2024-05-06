@@ -31,15 +31,15 @@ let options = document.getElementsByName('levelspeed');
 
 
 //default level
-window.sessionStorage.setItem("levelwant","Easy");
+window.sessionStorage.setItem("levelwant", "Easy");
 let defaultsecond = lvl[window.sessionStorage.getItem("levelwant")];
 lvlNamespan.innerHTML = window.sessionStorage.getItem("levelwant");
 secondsspan.innerHTML = defaultsecond;
 timeleftspan.innerHTML = defaultsecond;
 //level setting
-options.forEach(function(option) {
-    option.addEventListener('change', function() {
-        window.sessionStorage.setItem("levelwant",this.value);
+options.forEach(function (option) {
+    option.addEventListener('change', function () {
+        window.sessionStorage.setItem("levelwant", this.value);
         lvlNamespan.innerHTML = window.sessionStorage.getItem("levelwant");
         let defaultsecond = lvl[window.sessionStorage.getItem("levelwant")];
         secondsspan.innerHTML = defaultsecond;
@@ -49,7 +49,6 @@ options.forEach(function(option) {
 
 
 //setting lvl name second score
-
 scoretotal.innerHTML = words.length;
 
 //disable paste event
@@ -60,10 +59,13 @@ input.onpaste = function () {
 
 //start game
 startbutton.onclick = function () {
-    // Add event listener to each radio button
-    this.style.display="none";
+    this.style.display = "none";
+    //delete the last word 
+    theword.innerHTML = "";
+    theword.style.display = "block";
     //remove game over word
-    finishmessage.innerHTML="";
+    finishmessage.innerHTML = "";
+    input.value = "";
     input.focus();
     //generate word function
     genwords();
@@ -80,20 +82,21 @@ function genwords() {
     theword.innerHTML = randomword;
     //empty upcoming words
     upcomingwords.innerHTML = "";
-    upcomingwords.style.display="flex";
+    upcomingwords.style.display = "flex";
     //generate upcoming words
     for (let i = 0; i < words.length; i++) {
         let div = document.createElement("div");
         div.appendChild(document.createTextNode(words[i]));
         upcomingwords.appendChild(div);
     }
+
     //call start play fun
     startplay();
 }
 
 
 function startplay() {
-    timeleftspan.innerHTML =lvl[window.sessionStorage.getItem("levelwant")];
+    timeleftspan.innerHTML = lvl[window.sessionStorage.getItem("levelwant")];
     let start = setInterval(() => {
         timeleftspan.innerHTML--
         if (timeleftspan.innerHTML === "0") {//stop timer
@@ -121,9 +124,9 @@ function startplay() {
                 let txt = document.createTextNode("Game Over");
                 spantxt.appendChild(txt);
                 finishmessage.appendChild(spantxt)
-                upcomingwords.style.display="none";
-                theword.style.display="none"
-                startbutton.style.display="block";
+                upcomingwords.style.display = "none";
+                theword.style.display = "none"
+                startbutton.style.display = "block";
             }
         }
     }, 1000);
