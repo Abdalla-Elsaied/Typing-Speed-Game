@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Typing Speed Game</title>
+    <link rel="stylesheet" href="main.css">
+</head>
+
+<body>
+    <div class="game">
+        <div class="name">Typing Speed Text Game</div>
+        <div class="container">
+            <div class="message">
+                You Are Playing On
+                <span class="lvl"></span>Level & You Have <span class="seconds"></span> Seconds To Type The Word
+            </div>
+            <div class="start">Start Playing</div>
+            <div class="the-word"></div>
+            <input type="text" class="input">
+            <div class="upcoming-words">Words Will Be Show Here</div>
+            <div class="control">
+                <div class="time">Time Left: <span></span> Seconds</div>
+                <div class="score">Score: <span class="get">0</span> From <span class="total"></span></div>
+            </div>
+            <div class="finish"></div>
+            <div class="setting">
+                <form action="">
+                    <input type="radio" id="easy" name="levelspeed" value="Easy" checked >
+                    <label for="easy">Easy</label>
+                    <input type="radio" id="normal" name="levelspeed" value="Normal">
+                    <label for="normal">Normal</label>
+                    <input type="radio" id="hard" name="levelspeed" value="Hard">
+                    <label for="hard">Hard </label>
+                </form>
+            </div>
+        </div>
+    </div>
+    <script src="jsfile.js"></script>
+</body>
+
+</html>
